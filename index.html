@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Senden küçük olan hücreleri ye ve büyü.">
+<meta name="keywords" content="agario, agar, io, cell, cells, virus, bacteria, blob, game, games, web game, html5, fun, flash">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta property="fb:app_id" content="677505792353827"/>
+<meta property="og:title" content="Agario-Turkey"/>
+<meta property="og:description" content="Senden küçük olan hücreleri ye ve büyü."/>
+<meta property="og:url" content="http://agario-turkey.com/"/>
+<meta property="og:image" content="http://agar.io/img/1200x630.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:type" content="website"/>
+<title>Agario-Turkey - Türklere Özel Pvp Server</title>
+<link id="favicon" rel="icon" type="image/png" href="favicon-32x32.png"/>
+<link href='https://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="main_out.js?542"></script>
+<style>body{padding:0;margin:0;overflow:hidden;}#canvas{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;height:100%;}.checkbox label{margin-right:10px;}form{margin-bottom:0px;}.btn-play,.btn-settings,.btn-spectate{display:block;height:35px;}.btn-play{width:85%;float:left;}.btn-settings{width:13%;float:right;}.btn-spectate{display:block;float:right;}#adsBottom{position:absolute;left:0;right:0;bottom:0;}#adsBottomInner{margin:0px auto;width:728px;height:90px;border:5px solid white;border-radius:5px 5px 0px 0px;background-color:#FFFFFF;box-sizing:content-box;}.region-message{display:none;margin-bottom:12px;margin-left:6px;margin-right:6px;text-align:center;}#nick,#locationKnown #region{width:65%;float:left;}#locationUnknown #region{margin-bottom:15px;}#gamemode,#spectateBtn{width:33%;float:right;}#helloDialog{width:400px;background-color:#FFFFFF;margin:10px auto;border-radius:15px;padding:5px 15px 5px 15px;position:absolute;top:50%;left:50%;margin-right:-50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}#a300x250{width:300px;height:250px;background-repeat:no-repeat;background-size:contain;background-position:center center;}</style>
+</head>
+<body>
+<div id="fb-root"></div>
+<div id="overlays" style="display:none; position: absolute; left: 0; right: 0; top: 0; bottom: 0; background-color: rgba(0,0,0,0.5); z-index: 200;">
+<div id="helloDialog">
+<form role="form">
+<div class="form-group">
+<div style="float: left; margin-left: 20px;"><h2>Agario-Turkey</h2><script src="https://apis.google.com/js/plusone.js"></script>
+<script src="https://apis.google.com/js/platform.js"></script>
+<div class="g-ytsubscribe" data-channel="HelixOfficalTv" data-layout="default" data-count="default"></div>
+</div>
+
+<div class="fb-like" style="float: right; margin-top: 30px;" data-href="https://www.facebook.com/agarioturkeycom" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+<br clear="both"/>
+</div>
+
+
+<div class="form-group">
+<input id="nick" class="form-control" placeholder="Nick" value="Agario-Turkey.com" maxlength="15"/>
+<select id="gamemode" class="form-control" onchange="setGameMode($(this).val());" required>
+<option selected value="">Tekil</option>
+</select>
+<br clear="both"/>
+</div>
+<div id="locationUnknown">
+</div>
+<div>
+<div class="text-muted region-message CN-China">
+ 
+</div>
+</div>
+<div class="form-group">
+<button disabled type="submit" id="playBtn" onclick="setNick(document.getElementById('nick').value); return false;" class="btn btn-play btn-primary btn-needs-server">Oyuna Başla</button>
+<button onclick="$('#settings, #instructions').toggle();return false;" class="btn btn-info btn-settings"><i class="glyphicon glyphicon-cog"></i></button>
+<br clear="both"/>
+</div>
+<div id="settings" class="checkbox" style="display:none;">
+<div class="form-group">
+<div id="locationKnown"></div>
+
+<button id="spectateBtn" onclick="spectate(); return false;" disabled class="btn btn-warning btn-spectate btn-needs-server">Oyunu İzle</button>
+<br clear="both"/>
+</div>
+<div style="margin: 6px;">
+<label><input type="checkbox" onchange="setSkins(!$(this).is(':checked'));"> Skinleri Gizle</label>
+<label><input type="checkbox" onchange="setNames(!$(this).is(':checked'));"> İsimleri Gizle</label>
+<label><input type="checkbox" onchange="setDarkTheme($(this).is(':checked'));"> Siyah Tema</label>
+<label><input type="checkbox" onchange="setColors($(this).is(':checked'));"> Renkleri Gizle</label>
+<label><input type="checkbox" onchange="setShowMass($(this).is(':checked'));"> Puanı Göster</label>
+</div>
+</div>
+</form>
+<div id="instructions">
+<hr/>
+<center><span class="text-muted">
+Topu hareket ettirmek için fareyi oynatınız.<br/>
+<b>Space</b> tuşuna basıp bölünün.<br/>
+<b>W</b> tuşuna basıp yem atınız.<br/>
+</span></center>
+</div>
+<hr/>
+<center>
+<div id="a300x250">
+
+
+
+</div>
+<small class="text-muted text-center">Agario-Turkey</small>
+</center>
+<hr style="margin-bottom: 7px; "/>
+<div style="margin-bottom: 5px; line-height: 32px; margin-left: 6px; height: 32px;">
+<center>
+<a href="privacy.txt" class="text-muted">Gizlilik</a>
+|
+<a href="terms.txt" class="text-muted">Kullanım Koşulları</a>
+|
+<a href="changelog.txt" class="text-muted">Değişiklikler</a>
+</center>
+</div>
+ 
+</div>
+</div>
+<div id="connecting" style="display:none;position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 100; background-color: rgba(0,0,0,0.5);">
+<div style="width: 350px; background-color: #FFFFFF; margin: 100px auto; border-radius: 15px; padding: 5px 15px 5px 15px;">
+<h2>Bağlanma</h2>
+<p> Agario-Turkey sunucularına bağlanılamadı. Lütfen anti-virüs programlarını devre dışı bırakınız.
+</div>
+</div>
+<canvas id="canvas" width="800" height="600"></canvas>
+<div style="font-family:'Ubuntu'">&nbsp;</div>
+</body>
+</html>
